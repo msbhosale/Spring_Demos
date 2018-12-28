@@ -1,0 +1,48 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+  	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+
+	<!-- Definition for student bean -->
+	<!-- For setter injection -->
+	<bean id="student" class="com.msbhosale.beans.Student">
+		<property name="rollNumber" value="1904" />
+		<property name="firstName" value="Harsh" />
+		<property name="lastName" value="Bhosale" />
+	</bean>
+	
+	<!-- Definition for student bean -->
+	<!-- For constructor injection -->
+	<bean id="anotherStudent" class="com.msbhosale.beans.Student">
+		<constructor-arg name="rollNumber" value="0511"/>	
+		<constructor-arg name="firstName" value="Vinu"/>
+		<constructor-arg name="lastName" value="Katkar"/>
+	</bean>
+	
+	<!-- Definition for student bean -->
+	<!-- For singleton scope of bean -->
+	<bean id="student2" class="com.msbhosale.beans.Student" scope="singleton">
+		<property name="rollNumber" value="2712" />
+		<property name="firstName" value="Ganesh" />
+		<property name="lastName" value="Ekunde" />
+	</bean>
+	
+	<!-- For dependency injection -->
+	
+	<!-- Definition for employee bean -->	
+	<bean id="employee" class="com.msbhosale.beans.Employee">
+		<property name="id" value="123" />
+		<property name="name" value="Asif" />
+		<property name="address" ref="address" />
+	</bean>
+	
+	<bean id="address" class="com.msbhosale.beans.Address">
+		<property name="city" value="Kolhapur"/>
+		<property name="pin" value="410110"/>
+	</bean>
+
+	<!-- Dependency injection ends here -->
+
+</beans>
