@@ -1,9 +1,13 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-  	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
 
 	<!-- Definition for student bean -->
 	<!-- For setter injection -->
@@ -12,37 +16,58 @@
 		<property name="firstName" value="Harsh" />
 		<property name="lastName" value="Bhosale" />
 	</bean>
-	
+
 	<!-- Definition for student bean -->
 	<!-- For constructor injection -->
 	<bean id="anotherStudent" class="com.msbhosale.beans.Student">
-		<constructor-arg name="rollNumber" value="0511"/>	
-		<constructor-arg name="firstName" value="Vinu"/>
-		<constructor-arg name="lastName" value="Katkar"/>
+		<constructor-arg name="rollNumber" value="0511" />
+		<constructor-arg name="firstName" value="Vinu" />
+		<constructor-arg name="lastName" value="Katkar" />
 	</bean>
-	
+
 	<!-- Definition for student bean -->
 	<!-- For singleton scope of bean -->
-	<bean id="student2" class="com.msbhosale.beans.Student" scope="singleton">
+	<bean id="student2" class="com.msbhosale.beans.Student"
+		scope="singleton">
 		<property name="rollNumber" value="2712" />
 		<property name="firstName" value="Ganesh" />
 		<property name="lastName" value="Ekunde" />
 	</bean>
-	
+
 	<!-- For dependency injection -->
-	
-	<!-- Definition for employee bean -->	
+
+	<!-- Definition for employee bean -->
 	<bean id="employee" class="com.msbhosale.beans.Employee">
 		<property name="id" value="123" />
 		<property name="name" value="Asif" />
 		<property name="address" ref="address" />
 	</bean>
-	
+
 	<bean id="address" class="com.msbhosale.beans.Address">
-		<property name="city" value="Kolhapur"/>
-		<property name="pin" value="410110"/>
+		<property name="city" value="Kolhapur" />
+		<property name="pin" value="410110" />
 	</bean>
 
 	<!-- Dependency injection ends here -->
 
+	<!-- BeanNameAware interface -->
+
+	<bean id="date" class="com.msbhosale.beans.Date">
+		<property name="dd" value="30" />
+		<property name="mm" value="12" />
+		<property name="yy" value="2018" />
+	</bean>
+
+	<!-- BeanNameAware interface ends here -->
+
+	<!-- Auto wire -->
+	<bean id="person" class="com.msbhosale.beans.Person">
+		<property name="name" value="Aniket" />
+	</bean>
+
+	<bean id="birthDate" class="com.msbhosale.beans.Date">
+		<property name="dd" value="16" />
+		<property name="mm" value="09" />
+		<property name="yy" value="1990" />
+	</bean>
 </beans>
